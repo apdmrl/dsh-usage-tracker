@@ -1,0 +1,9 @@
+# dsh-usage-tracker bundle patch: inserts this plugin into a profile's layer
+# stack. Applied when a profile lists this bundle; the row references the
+# package by name so Node resolution finds the installed code. The node half
+# (exports ".") runs in the host process (llm/stream listener, stats
+# persistence, /usage-tracker/stats route), and the dsh.client declaration in
+# package.json loads the browser half (exports "./client") into the web GUI.
+- insert:
+    - id: usage-tracker
+      name: 'dsh-usage-tracker'
