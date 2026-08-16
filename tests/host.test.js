@@ -60,6 +60,8 @@ test('host half records llm/stream usage and serves it over the stats route', as
   // Exactly one pricing band is non-zero for a single call.
   const bandTotals = ['peak', 'offPeak', 'flat'].filter((k) => payload.stats.byBand[k].calls > 0)
   assert.equal(bandTotals.length, 1)
+  // The signal the footer dot consumes.
+  assert.ok(payload.currentBand === 'peak' || payload.currentBand === 'offPeak')
 })
 
 test('host half persists to the stats file and reloads it', async () => {
